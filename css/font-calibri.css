@@ -1,0 +1,19 @@
+@font-face {
+    font-family: calibri;
+    src:
+        url("../assets/fonts/calibri.ttf") format("opentype");
+    font-style: normal;
+    font-weight: 400;
+    font-stretch: normal;
+    font-display: auto;
+}
+
+@font-face {
+    font-family: calibri;
+    src:
+        url("../assets/fonts/calibri_bold.ttf") format("opentype");
+    font-style: normal;
+    font-weight: 700;
+    font-stretch: normal;
+    font-display: auto;
+}

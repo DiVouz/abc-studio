@@ -11,6 +11,8 @@
     --gap: 1rem;
     --gap-double: calc(var(--gap) * 2);
     --gap-half: calc(var(--gap) / 2);
+
+    --border-radius: 0.2rem;
 }
 
 *, *::before, *::after {
@@ -37,7 +39,7 @@ html, body {
 }
 
 html {
-    font-family: freight-sans-pro;
+    font-family: calibri, sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.5;
@@ -146,6 +148,7 @@ body {
 .section-about img,
 .section-about p {
     min-width: 18rem;
+    border-radius: var(--border-radius);
 }
 
 /* SECTION SEPERATOR */
@@ -171,11 +174,155 @@ body {
 /* SECTION GALLERY */
 
 .section-gallery {
+    user-select: none;
     padding-block: 7rem;
+}
 
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
-    gap: 0.2rem;
+.gallery-category-container {
+    align-items: flex-start;
+}
+
+.gallery-category {
+    position: relative;
+
+    align-items: flex-end;
+    justify-content: start;
+
+    height: 8rem;
+    width: 100%;
+
+    border-radius: var(--border-radius);
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: all var(--transition-duration) var(--transition-ease);
+}
+
+.gallery-category[data-selected="true"] {
+    height: 80vh;
+    align-items: flex-start;
+}
+
+.gallery-category[data-selected="false"]:hover {
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
+    transform: scale(1.01);
+}
+
+.gallery-category-title {
+    position: relative;
+
+    font-size: 4em;
+    color: #ffffff;
+    line-height: 1;
+
+    padding: 0.25rem;
+
+    z-index: 2;
+}
+
+.gallery-category[data-selected="false"] .gallery-category-navigation {
+    display: none;
+}
+
+.gallery-category[data-selected="false"] .gallery-category-image-item-description {
+    display: none;
+}
+
+.gallery-category-navigation {
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    left: 0;
+
+    width: 3rem;
+    height: 5rem;
+
+    background-color: rgba(0, 0, 0, 0.3);
+
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+
+    cursor: pointer;
+
+    z-index: 3;
+
+    transition: all var(--transition-duration) var(--transition-ease);
+}
+
+.gallery-category-navigation.gallery-category-navigation-right {
+    left: unset;
+    right: 0;
+
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.gallery-category-navigation > img {
+    filter: invert(100%);
+}
+
+.gallery-category-navigation:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.gallery-category-image-container {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 1;
+
+    transition: all var(--transition-duration) var(--transition-ease);
+}
+
+.gallery-category-image-item {
+    position: relative;
+
+    background-color: var(--background-color-accent);
+
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-category-image-item[data-visible="false"] {
+    display: none;    
+}
+
+.gallery-category[data-selected="false"] .gallery-category-image-item img {
+    object-fit: cover;
+}
+
+.gallery-category[data-selected="true"] .gallery-category-image-item img {
+    object-position: 50% 50% !important;
+}
+
+.gallery-category-image-item img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: 50% 50%;
+}
+
+.gallery-category[data-selected="false"] .gallery-category-image-item img {
+    filter: blur(2px) brightness(60%);
+}
+
+.gallery-category-image-item-description {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    padding: 1rem;
+
+    color: #ffffff;
 }
 
 /* SECTION SOCIAL */
@@ -188,7 +335,7 @@ body {
     width: 2.5rem;
     height: 2.5rem;
 
-    border-radius: 6px;
+    border-radius: var(--border-radius);
     background-color: var(--background-color);
 
     margin-block: 3.5rem;
@@ -208,13 +355,16 @@ body {
     color: var(--text-color-header);
 }
 
-.section-map iframe {
-    padding-block: var(--gap);
+.section-map > div:first-child {
+    margin-bottom: var(--gap);
+}
 
+.section-map iframe {
     width: 100%;
     height: 25rem;
     
     border: none;
+    border-radius: var(--border-radius);
 
     filter: grayscale(100%) invert(92%) contrast(83%);
 }
