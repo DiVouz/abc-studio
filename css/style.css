@@ -138,7 +138,6 @@ body {
 
 .section-about > div {
     align-items: flex-start;
-    padding: var(--gap);
 }
 
 .section-about > div:first-child {
@@ -222,49 +221,8 @@ body {
     z-index: 2;
 }
 
-.gallery-category[data-selected="false"] .gallery-category-navigation {
-    display: none;
-}
-
 .gallery-category[data-selected="false"] .gallery-category-image-item-description {
     display: none;
-}
-
-.gallery-category-navigation {
-    position: absolute;
-
-    top: 50%;
-    transform: translateY(-50%);
-
-    left: 0;
-
-    width: 3rem;
-    height: 5rem;
-
-    background-color: rgba(0, 0, 0, 0.3);
-
-    border-radius: 0 var(--border-radius) var(--border-radius) 0;
-
-    cursor: pointer;
-
-    z-index: 3;
-
-    transition: all var(--transition-duration) var(--transition-ease);
-}
-
-.gallery-category-navigation.gallery-category-navigation-right {
-    left: unset;
-    right: 0;
-
-    border-radius: var(--border-radius) 0 0 var(--border-radius);
-}
-
-.gallery-category-navigation > img {
-    filter: invert(100%);
-}
-
-.gallery-category-navigation:hover {
-    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .gallery-category-image-container {
@@ -325,6 +283,44 @@ body {
     color: #ffffff;
 }
 
+.gallery-category[data-selected="false"] .gallery-category-dots-container {
+    display: none;
+}
+
+.gallery-category-dots-container {
+    position: absolute;
+
+    bottom: 0.5rem;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+
+    z-index: 2;
+}
+
+.gallery-category-dots-container .gallery-category-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+
+    border-radius: 50%;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    cursor: pointer;
+
+    transition: all var(--transition-duration) var(--transition-ease);
+}
+
+.gallery-category-dots-container .gallery-category-dot[data-active="true"] {
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(255, 255, 255, 1);
+}
+
 /* SECTION SOCIAL */
 
 .section-social {
@@ -367,4 +363,13 @@ body {
     border-radius: var(--border-radius);
 
     filter: grayscale(100%) invert(92%) contrast(83%);
+}
+
+/* MEDIA */
+
+@media (max-width: 768px) {
+    /* root */
+    :root {
+        --gap: 0.5rem;
+    }
 }
