@@ -1,4 +1,6 @@
 (() => {
+    // GALLERY
+
     const DOT_TEMPLATE = `
         <div class="gallery-category-dot"></div>
     `;
@@ -12,7 +14,11 @@
         let currentIndex = Array.from(categoryImageItems).findIndex((item) => item.dataset.visible === 'true');
         if (currentIndex === -1) currentIndex = 0;
 
-        const changeImageOnCategory = (newIndex) => {
+        let isDragging = false;
+        let isLastClickDrag = false;
+        let dragStartX = 0;
+
+        const changeImageOnCategory = (newIndex, shouldScroll = true) => {
             currentIndex = newIndex;
 
             categoryImageItems.forEach((item, i) => {
@@ -20,7 +26,9 @@
                 dotElenets[i].dataset.active = (i === currentIndex).toString();
             });
 
-            categoryElement.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+            if (shouldScroll === true) {
+                categoryElement.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+            }
         }
 
         // Create dots
@@ -33,7 +41,8 @@
             dotElenets.push(dotElement);
 
             dotElement.addEventListener('click', (event) => {
-                event.stopPropagation();
+                event.stopImmediatePropagation();
+                event.preventDefault();
 
                 const dotIndex = dotElenets.indexOf(dotElement);
                 changeImageOnCategory(dotIndex);
@@ -42,7 +51,8 @@
 
         // Handle click
         categoryElement.addEventListener('click', (event) => {
-            event.stopPropagation();
+            event.stopImmediatePropagation();
+            event.preventDefault();
 
             if (categoryElement.dataset.selected !== 'true') {
                 galleryCategories.forEach((el) => el.dataset.selected = 'false');
@@ -57,6 +67,11 @@
     
                 categoryElement.addEventListener('transitionend', onTransitionEnd);
             } else {
+                if (isLastClickDrag === true) {
+                    isLastClickDrag = false;
+                    return;
+                }
+
                 const rect = categoryElement.getBoundingClientRect();
                 const clickX = event.clientX - rect.left;
                 
@@ -70,6 +85,106 @@
             }
         });
 
-        changeImageOnCategory(currentIndex);
+        categoryElement.addEventListener('mousedown', (event) => {
+            if (isDragging) return;
+
+            event.stopImmediatePropagation();
+            event.preventDefault();
+
+            isDragging = true;
+            dragStartX = event.clientX;
+        });
+
+        document.addEventListener('mouseup', (event) => {
+            if (!isDragging) return;
+
+            event.stopPropagation();
+            event.preventDefault();
+
+            isDragging = false;
+            const dragEndX = event.clientX;
+            const dragDistance = dragEndX - dragStartX;
+            const dragThreshold = 50; // pixels
+
+            if (Math.abs(dragDistance) >= dragThreshold) {
+                isLastClickDrag = true;
+
+                if (dragDistance > 0) {
+                    // dragged right
+                    changeImageOnCategory((currentIndex - 1 + categoryImageItems.length) % categoryImageItems.length);
+                } else {
+                    // dragged left
+                    changeImageOnCategory((currentIndex + 1) % categoryImageItems.length);
+                }
+            }
+        });
+
+        changeImageOnCategory(currentIndex, false);
     });
+
+    // LANGUAGE
+
+    const LANGUAGE = Object.freeze({
+        EN: 'en',
+        EL: 'el',
+    });
+
+    document.querySelector('#button-language-el').addEventListener('click', (event) => setLanguage(LANGUAGE.EN));
+    document.querySelector('#button-language-en').addEventListener('click', (event) => setLanguage(LANGUAGE.EL));
+
+    function isValidLanguage(lang) {
+        for (const key in LANGUAGE) {
+            if (LANGUAGE[key] === lang) return true;
+        }
+        return false;
+    }
+
+    function setLanguage(lang) {
+        if (!isValidLanguage(lang)) {
+            return setLanguage(LANGUAGE.EL);
+        }
+
+        if (document.documentElement.lang === lang) return;
+
+        document.documentElement.lang = lang;
+
+        let url = new URL(window.location.href);
+        url.searchParams.set('lang', lang);
+        window.history.pushState({}, '', url.href);
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get('lang');
+    setLanguage(langParam);
+
+    // THEME
+
+    const THEME = Object.freeze({
+        DARK: 'dark',
+        LIGHT: 'light',
+    });
+
+    document.querySelector('#button-theme-light').addEventListener('click', (event) => setTheme(THEME.DARK));
+    document.querySelector('#button-theme-dark').addEventListener('click', (event) => setTheme(THEME.LIGHT));
+
+    function isValidTheme(theme) {
+        for (const key in THEME) {
+            if (THEME[key] === theme) return true;
+        }
+        return false;
+    }
+
+    function setTheme(newTheme) {
+        if (!isValidTheme(newTheme)) {
+            return setTheme(THEME.LIGHT);
+        }
+
+        if (document.body.dataset.theme === newTheme) return;
+
+        document.body.dataset.theme = newTheme;
+
+        localStorage.setItem('theme', newTheme);
+    }
+
+    setTheme(localStorage.getItem('theme'));
 })();

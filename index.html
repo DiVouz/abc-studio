@@ -3,60 +3,107 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="theme-color" content="ffffff" />
+        <meta name="theme-color" content="#ffffff" />
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
         
-        <title>ABCstudio Volos</title>
-        <meta name="description" content="">
-        <meta name="keywords" content="">
+        <title>ABCstudio Volos | Ήχος και Φωτισμός από το 1978</title>
+        <meta name="description" content="ABCstudio Volos – Επαγγελματικά συστήματα ήχου και φωτισμού από το 1978. Πώληση, ενοικίαση, εγκατάσταση και τεχνική υποστήριξη σε όλη τη Μαγνησία.">
+        <meta name="keywords" content="abcstudio, Volos, ηχητικά συστήματα, φωτιστικά συστήματα, ενοικίαση ήχου, ενοικίαση φωτισμού, επαγγελματικός ήχος, φωτισμός εκδηλώσεων, τεχνική υποστήριξη, εγκατάσταση ήχου, ηχητικές εγκαταστάσεις, φωτιστικές εγκαταστάσεις, events, weddings, συνέδρια, θέατρα, Home Theatre, Μαγνησία, Θεσσαλία, audio systems, lighting systems, sound rental, lighting rental, sound installation, Volos Greece, επαγγελματικός εξοπλισμός, ολοκληρωμένες λύσεις ήχου">
         <meta name="author" content="DiVouz">
-        <link rel="canonical" href="https://abcvolos.gr/">
-        <link type="image/x-icon" rel="icon" href="assets/logo.jpg">
+        <link rel="canonical" href="https://abcvolos.gr">
+        <link type="image/x-icon" rel="icon" href="./assets/logo.jpg">
+        <meta name="content-language" content="el">
         
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
-        <meta property="og:url" content="https://abcvolos.gr/">
-        <meta property="og:title" content="">
-        <meta property="og:description" content="">
-        <meta property="og:image" content="">
+        <meta property="og:url" content="https://abcvolos.gr">
+        <meta property="og:title" content="ABCstudio Volos | Ήχος και Φωτισμός από το 1978">
+        <meta property="og:description" content="ABCstudio Volos – Επαγγελματικά συστήματα ήχου και φωτισμού από το 1978. Πώληση, ενοικίαση, εγκατάσταση και τεχνική υποστήριξη σε όλη τη Μαγνησία.">
+        <meta property="og:image" content="./assets/logo.jpg">
         
         <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:url" content="https://abcvolos.gr/">
-        <meta name="twitter:title" content="">
-        <meta name="twitter:description" content="">
-        <meta name="twitter:image" content="">
+        <meta name="twitter:url" content="https://abcvolos.gr">
+        <meta name="twitter:title" content="ABCstudio Volos | Ήχος και Φωτισμός από το 1978">
+        <meta name="twitter:description" content="ABCstudio Volos – Επαγγελματικά συστήματα ήχου και φωτισμού από το 1978. Πώληση, ενοικίαση, εγκατάσταση και τεχνική υποστήριξη σε όλη τη Μαγνησία.">
+        <meta name="twitter:image" content="./assets/logo.jpg">
         
-        <link type="text/css" rel="stylesheet" href="css/font-calibri.css">
-        <link type="text/css" rel="stylesheet" href="css/style.css">
+        <link type="text/css" rel="stylesheet" href="./css/font-calibri.css">
+        <link type="text/css" rel="stylesheet" href="./css/style.css">
 
-        <script type="text/javascript" src="js/main.js" defer></script>
+        <script type="text/javascript" src="./js/main.js" defer></script>
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "ABCstudio Volos",
+            "image": "https://abcvolos.gr/assets/logo.jpg",
+            "@id": "https://abcvolos.gr",
+            "url": "https://abcvolos.gr",
+            "telephone": "+302421047222",
+            "email": "abcvolos@gmail.com",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Ιωλκού 337",
+                "addressLocality": "Βόλος",
+                "postalCode": "38221",
+                "addressCountry": "GR"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 39.3784954,
+                "longitude": 22.9607932
+            },
+            "sameAs": [
+                "http://www.facebook.com/abcvolos"
+            ],
+            "description": "Επαγγελματικά συστήματα ήχου και φωτισμού στη Μαγνησία. Από το 1978 παρέχουμε πώληση, ενοικίαση, εγκατάσταση και τεχνική υποστήριξη για εκδηλώσεις και εγκαταστάσεις."
+        }
+        </script>
     </head>
-	<body>
+	<body data-theme="light">
         <header>
-            <div class="header-image"></div>
+            <div class="header-image flex-column">
+                <img src="./assets/logo.svg" alt="ABCstudio logo" />
+                <h1>ABCstudio</h1>
+            </div>
+
+            <nav class="flex-row">
+                <div>
+                    <div class="flex-row" data-theme="light" id="button-theme-light"><img src="./assets/icons/sun-solid-full.svg" alt="Light theme icon" /></div>
+                    <div class="flex-row" data-theme="dark" id="button-theme-dark"><img src="./assets/icons/moon-solid-full.svg" alt="Dark theme icon" /></div>
+                </div>
+
+                <div>
+                    <div class="flex-row" data-language="el" id="button-language-el"><img src="./assets/language/greek.jpg" alt="Greek flag icon" /></div>
+                    <div class="flex-row" data-language="en" id="button-language-en"><img src="./assets/language/english.jpg" alt="English flag icon" /></div>
+                </div>
+            </nav>
         </header>
 
         <main>
             <div class="section section-about flex-column">
                 <div class="flex-row flex-wrap">
                     <div class="flex-1">
-                        <img src="./assets/photos/IMG_81.jpg" alt="" />
+                        <img src="./assets/photos/IMG_81.jpg" alt="An image showing the main desk of the studio." />
                     </div>
                     <div class="flex-1">
-                        <p>
-                            Το ABCstudio δραστηριοποιείται στον κόσμο των εφαρμογών ηχητικών συστημάτων απο το 1978. Αποκλειστικό αντικείμενο της επιχείρησης είναι η πώληση και ενοικίαση ηχητικών και φωτιστικών συστημάτων. Η φιλοσοφία του στις πωλήσεις εκφράζεται με τον όρο "ολοκληρωμένη λύση" που σημαίνει συζητούμε, σχεδιάζουμε, προμηθεύουμε, εγκαθιστούμε αλλά και συνεχίζουμε μετά την πώληση να υποστηρίζουμε την καλή λειτουργία της ηχητικής εγκατάστασης.
+                        <p class="user-select-auto">
+                            <span data-language="el">Το ABCstudio δραστηριοποιείται στον κόσμο των εφαρμογών ηχητικών συστημάτων απο το 1978. Αποκλειστικό αντικείμενο της επιχείρησης είναι η πώληση και ενοικίαση ηχητικών και φωτιστικών συστημάτων. Η φιλοσοφία του στις πωλήσεις εκφράζεται με τον όρο "ολοκληρωμένη λύση" που σημαίνει συζητούμε, σχεδιάζουμε, προμηθεύουμε, εγκαθιστούμε αλλά και συνεχίζουμε μετά την πώληση να υποστηρίζουμε την καλή λειτουργία της ηχητικής εγκατάστασης.</span>
+                            <span data-language="en">ABCstudio has been active in the field of sound system applications since 1978. The exclusive focus of the company is the sale and rental of sound and lighting systems. Its sales philosophy is expressed by the term "integrated solution," which means we discuss, design, supply, install, and continue to support the proper operation of the sound installation after the sale.</span>
                         </p>
                     </div>
                 </div>
     
                 <div class="flex-row flex-wrap">
                     <div class="flex-1">
-                        <img src="./assets/photos/IMG_8140.jpg" alt="" />
+                        <img src="./assets/photos/IMG_8140.jpg" alt="An image showing various audio equipment racks." />
                     </div>
                     <div class="flex-1">
-                        <p>
-                            Στον τομέα της παροχής υπηρεσιών (ενοικιάσεις) η ποιότητα και αξιοπιστία όλων των προσφερομένων μηχανημάτων καθώς και του ανθρωπίνου δυναμικού, σηματοδοτούν την φιλοσοφία μας για την καλύτερη δυνατή εξυπηρέτησή σας. Η πώληση ηχητικών και φωτιστικών συστημάτων, η μελέτη και εκτίμηση των αναγκών του πελάτη καθώς και η πάσης φύσεως τεχνική υποστήριξη, επαγγελματικές εφαρμογές σε θέατρα, συνεδριακά κέντρα, μεταφραστικά συστήματα, συστήματα Home Theatre, ηχητικές εγκαταστάσεις μικρές ή μεγάλες,πεπειραμένο ανθρώπινο δυναμικό,ηχολήπτες, φωτιστές, Dj's είναι τα κύρια χαρακτηριστικά στα οποία εστιάζεται το ενδιαφέρον της επιχείρησης μας.
+                        <p class="user-select-auto">
+                            <span data-language="el">Στον τομέα της παροχής υπηρεσιών (ενοικιάσεις) η ποιότητα και αξιοπιστία όλων των προσφερομένων μηχανημάτων καθώς και του ανθρωπίνου δυναμικού, σηματοδοτούν την φιλοσοφία μας για την καλύτερη δυνατή εξυπηρέτησή σας. Η πώληση ηχητικών και φωτιστικών συστημάτων, η μελέτη και εκτίμηση των αναγκών του πελάτη καθώς και η πάσης φύσεως τεχνική υποστήριξη, επαγγελματικές εφαρμογές σε θέατρα, συνεδριακά κέντρα, μεταφραστικά συστήματα, συστήματα Home Theatre, ηχητικές εγκαταστάσεις μικρές ή μεγάλες,πεπειραμένο ανθρώπινο δυναμικό,ηχολήπτες, φωτιστές, Dj's είναι τα κύρια χαρακτηριστικά στα οποία εστιάζεται το ενδιαφέρον της επιχείρησης μας.</span>
+                            <span data-language="en">In the field of service provision (rentals), the quality and reliability of all offered equipment, as well as of our personnel, reflect our philosophy of providing the best possible service. The sale of sound and lighting systems, the study and assessment of customer needs, and all types of technical support—professional applications in theaters, conference centers, interpretation systems, Home Theatre systems, small or large sound installations—along with experienced staff, sound engineers, lighting technicians, and DJs, are the main areas of focus for our company.</span>
                         </p>
                     </div>
                 </div>
@@ -66,16 +113,21 @@
             </div>
             
             <div class="section section-portfolio">
-                <h2 class="section-portfolio-header">Portfolio</h2>
+                <h2 class="section-portfolio-header user-select-auto">
+                    <span data-language="el">Πορτφόλιο</span>
+                    <span data-language="en">Portfolio</span>
+                </h2>
 
-                <p>
-                    Στα 30 χρονια λειτουργίας του ABCstudio εχει συνεργασθεί και υλοποιήσει πληθώρα εφαρμογών Ηχου - Φωτισμών σε ολη την περιοχή του Ν.Μαγνησίας χαρακτηριστικά αυτων ειναι η 10χρονη παρουσία στο Διεθνές φεστιβάλ Μουσικού Θεάτρου ως υπευθυνοι των ηχητικών εγκαταστάσεων του φεστιβάλ. Μονιμη οπτικοακουστική εγκατάσταση στις αιθουσες των δημοτικών Συμβουλίων των Δήμων Βόλου, Νοτίου Πηλίου, Ν.Ιωνίας Μαγνησίας. Επίσης εχουμε υλοποιήσει μεγάλα EVENTS του Πανεπιστημίου Θεσσαλίας, καθως και την οπτικοακουστική υποστήριξη στα εγκαινεια του Πολυχώρου Τσαλαπάτα και σε εκθέσεις στο ιδρυμα Πειραιώς.
+                <p class="user-select-auto">
+                    <span data-language="el">Στα 30 χρονια λειτουργίας του ABCstudio εχει συνεργασθεί και υλοποιήσει πληθώρα εφαρμογών Ηχου - Φωτισμών σε ολη την περιοχή του Ν.Μαγνησίας χαρακτηριστικά αυτων ειναι η 10χρονη παρουσία στο Διεθνές φεστιβάλ Μουσικού Θεάτρου ως υπευθυνοι των ηχητικών εγκαταστάσεων του φεστιβάλ. Μονιμη οπτικοακουστική εγκατάσταση στις αιθουσες των δημοτικών Συμβουλίων των Δήμων Βόλου, Νοτίου Πηλίου, Ν.Ιωνίας Μαγνησίας. Επίσης εχουμε υλοποιήσει μεγάλα EVENTS του Πανεπιστημίου Θεσσαλίας, καθως και την οπτικοακουστική υποστήριξη στα εγκαινεια του Πολυχώρου Τσαλαπάτα και σε εκθέσεις στο ιδρυμα Πειραιώς.</span>
+                    <span data-language="en">In its 30 years of operation, ABCstudio has collaborated on and completed numerous sound and lighting projects throughout the Magnesia region. Notably, it held a ten-year presence at the International Festival of Musical Theatre, serving as the team responsible for the festival’s sound installations. Permanent audiovisual systems have been installed in the municipal council halls of the Municipalities of Volos, South Pelion, and Nea Ionia of Magnesia. We have also carried out major events for the University of Thessaly, as well as provided audiovisual support for the inauguration of the Tsalpata Multipurpose Center and for exhibitions at the Piraeus Bank Cultural Foundation.</span>
                 </p>
 
                 <br />
 
-                <p>
-                    Εχουμε υποστηρίξει ηχητικά ολους τους χώρους στην ευρύτερη περιοχή όπως αιθουσες Ξενιά Βόλου και Ξενια Πορταριας, VOLOS PALACE, Πολυχώρος Τσαλαπατα, Δεσποτικό, Βαλένη και φυσικά συμμετέχουμε και υποστηρίζουμε ηχητικά και φωτιστικά όλα αυτά τα χρόνια ιδωτικές εκδήλωσεις στους χώρους που εσεις επιλέγετε σε ολη την περιοχή του Ν.Μαγνησίας.
+                <p class="user-select-auto">
+                    <span data-language="el">Εχουμε υποστηρίξει ηχητικά ολους τους χώρους στην ευρύτερη περιοχή όπως αιθουσες Ξενιά Βόλου και Ξενια Πορταριας, VOLOS PALACE, Πολυχώρος Τσαλαπατα, Δεσποτικό, Βαλένη και φυσικά συμμετέχουμε και υποστηρίζουμε ηχητικά και φωτιστικά όλα αυτά τα χρόνια ιδωτικές εκδήλωσεις στους χώρους που εσεις επιλέγετε σε ολη την περιοχή του Ν.Μαγνησίας.</span>
+                    <span data-language="en">We have provided sound support for all major venues in the wider area, including Xenia Volos and Xenia Portaria, Volos Palace, Tsalapatas Multipurpose Center, Despotiko, and Valeni. We have also consistently participated in and supported private events with sound and lighting systems at locations of your choice throughout the Magnesia region.</span>
                 </p>
             </div>
 
@@ -85,20 +137,23 @@
             <div class="section section-gallery">
                 <div class="flex-column gallery-category-container">
                     <div class="flex-row gallery-category" data-selected="false">
-                        <div class="gallery-category-title">Big Events</div>
+                        <div class="gallery-category-title">
+                            <span data-language="el">Μεγαλα Events</span>
+                            <span data-language="en">Big Events</span>
+                        </div>
 
                         <div class="gallery-category-image-container">
                             <div class="gallery-category-image-item" data-visible="true">
-                                <img loading="lazy" style="object-position: 50% 75%;" src="./assets/photos/31732404_266755613866431_97105705869246464_n.png" alt="" />
-                                <div class="gallery-category-image-item-description">test 1 test 1 test 1</div>
+                                <img loading="lazy" style="object-position: 50% 75%;" src="./assets/photos/31732404_266755613866431_97105705869246464_n.png" alt="A gallery image of various events" />
+                                <div class="gallery-category-image-item-description">1</div>
                             </div>
                             <div class="gallery-category-image-item" data-visible="false">
-                                <img loading="lazy" src="./assets/photos/1118.jpg" alt="" />
-                                <div class="gallery-category-image-item-description">test 2 test 2 test 2</div>
+                                <img loading="lazy" src="./assets/photos/1118.jpg" alt="A gallery image of various events" />
+                                <div class="gallery-category-image-item-description">2</div>
                             </div>
                             <div class="gallery-category-image-item" data-visible="false">
-                                <img loading="lazy" src="./assets/photos/31676520_266755223866470_3729670623987761152_o.jpg" alt="" />
-                                <div class="gallery-category-image-item-description">test 3 test 3 test 3</div>
+                                <img loading="lazy" src="./assets/photos/31676520_266755223866470_3729670623987761152_o.jpg" alt="A gallery image of various events" />
+                                <div class="gallery-category-image-item-description">3</div>
                             </div>
                         </div>
 
@@ -107,20 +162,23 @@
                     </div>
 
                     <div class="flex-row gallery-category" data-selected="true">
-                        <div class="gallery-category-title">Small Events</div>
+                        <div class="gallery-category-title">
+                            <span data-language="el">Μικρα Events</span>
+                            <span data-language="en">Small Events</span>
+                        </div>
 
                         <div class="gallery-category-image-container">
                             <div class="gallery-category-image-item" data-visible="true">
-                                <img loading="lazy" style="object-position: 50% 70%;" src="./assets/photos/31676527_266755333866459_7499649580472991744_o.jpg" alt="" />
-                                <div class="gallery-category-image-item-description">test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1</div>
+                                <img loading="lazy" style="object-position: 50% 70%;" src="./assets/photos/31676527_266755333866459_7499649580472991744_o.jpg" alt="A gallery image of various events" />
+                                <div class="gallery-category-image-item-description">1</div>
                             </div>
                             <div class="gallery-category-image-item" data-visible="false">
-                                <img loading="lazy" src="./assets/photos/31676732_266755330533126_2897951461247811584_o.jpg" alt="" />
-                                <div class="gallery-category-image-item-description">test 2 test 2 test 2</div>
+                                <img loading="lazy" src="./assets/photos/31676732_266755330533126_2897951461247811584_o.jpg" alt="A gallery image of various events" />
+                                <div class="gallery-category-image-item-description">2</div>
                             </div>
                             <div class="gallery-category-image-item" data-visible="false">
-                                <img loading="lazy" src="./assets/photos/1123.jpg" alt="" />
-                                <div class="gallery-category-image-item-description">test 3 test 3 test 3</div>
+                                <img loading="lazy" src="./assets/photos/1123.jpg" alt="A gallery image of various events" />
+                                <div class="gallery-category-image-item-description">3</div>
                             </div>
                         </div>
 
@@ -129,20 +187,23 @@
                     </div>
 
                     <div class="flex-row gallery-category" data-selected="false">
-                        <div class="gallery-category-title">Weddings</div>
+                        <div class="gallery-category-title">
+                            <span data-language="el">Γάμοι</span>
+                            <span data-language="en">Weddings</span>
+                        </div>
 
                         <div class="gallery-category-image-container">
                             <div class="gallery-category-image-item" data-visible="true">
-                                <img loading="lazy" style="object-position: 50% 95%;" src="./assets/photos/17_09_02_91949.jpg" alt="" />
-                                <div class="gallery-category-image-item-description">test 1 test 1 test 1</div>
+                                <img loading="lazy" style="object-position: 50% 95%;" src="./assets/photos/17_09_02_91949.jpg" alt="A gallery image of various events" />
+                                <div class="gallery-category-image-item-description">1</div>
                             </div>
                             <div class="gallery-category-image-item" data-visible="false">
-                                <img loading="lazy" src="./assets/photos/IMG_1964.jpg" alt="" />
-                                <div class="gallery-category-image-item-description">test 2 test 2 test 2</div>
+                                <img loading="lazy" src="./assets/photos/IMG_1964.jpg" alt="A gallery image of various events" />
+                                <div class="gallery-category-image-item-description">2</div>
                             </div>
                             <div class="gallery-category-image-item" data-visible="false">
-                                <img loading="lazy" src="./assets/photos/IMG_1963.jpg" alt="" />
-                                <div class="gallery-category-image-item-description">test 3 test 3 test 3</div>
+                                <img loading="lazy" src="./assets/photos/IMG_1963.jpg" alt="A gallery image of various events" />
+                                <div class="gallery-category-image-item-description">3</div>
                             </div>
                         </div>
 
@@ -151,20 +212,23 @@
                     </div>
 
                     <div class="flex-row gallery-category" data-selected="false">
-                        <div class="gallery-category-title">Installations</div>
+                        <div class="gallery-category-title">
+                            <span data-language="el">Εγκαταστάσεις</span>
+                            <span data-language="en">Installations</span>
+                        </div>
 
                         <div class="gallery-category-image-container">
                             <div class="gallery-category-image-item" data-visible="true">
-                                <img loading="lazy" style="object-position: 50% 70%;" src="./assets/photos/IMG_0774.jpg" alt="" />
-                                <div class="gallery-category-image-item-description">test 1 test 1 test 1</div>
+                                <img loading="lazy" style="object-position: 50% 70%;" src="./assets/photos/IMG_0774.jpg" alt="A gallery image of various events" />
+                                <div class="gallery-category-image-item-description">1</div>
                             </div>
                             <div class="gallery-category-image-item" data-visible="false">
-                                <img loading="lazy" src="./assets/photos/1098.jpg" alt="" />
-                                <div class="gallery-category-image-item-description">test 2 test 2 test 2</div>
+                                <img loading="lazy" src="./assets/photos/1098.jpg" alt="A gallery image of various events" />
+                                <div class="gallery-category-image-item-description">2</div>
                             </div>
                             <div class="gallery-category-image-item" data-visible="false">
-                                <img loading="lazy" src="./assets/photos/125546.jpg" alt="" />
-                                <div class="gallery-category-image-item-description">test 3 test 3 test 3</div>
+                                <img loading="lazy" src="./assets/photos/125546.jpg" alt="A gallery image of various events" />
+                                <div class="gallery-category-image-item-description">3</div>
                             </div>
                         </div>
 
@@ -176,19 +240,28 @@
 
             <div class="section section-full-width section-social flex-row">
                 <a class="flex-row" href="http://www.facebook.com/abcvolos" target="_blank" rel="noopener noreferrer">
-                    <img src="./assets/icons/facebook-f-brands-solid-full.svg" alt="Facebook icon" />
+                    <img class="filter-onDark-invert" src="./assets/icons/facebook-f-brands-solid-full.svg" alt="Facebook icon" />
                 </a>
 
                 <a class="flex-row" href="mailto:abcvolos@gmail.com" target="_blank" rel="noopener noreferrer">
-                    <img src="./assets/icons/envelope-regular-full.svg" alt="Email icon" />
+                    <img class="filter-onDark-invert" src="./assets/icons/envelope-regular-full.svg" alt="Email icon" />
                 </a>
             </div>
 
             <div class="section section-map">
                 <div class="flex-row flex-wrap">
-                    <div>ABC studio, R.Feraiou 99, Volos, 38333, Greece</div>
-                    <div>2421047222</div>
-                    <div>abcvolos@gmail.com</div>
+                    <div>
+                        <a href="https://maps.app.goo.gl/f8CrMGK3CFntK9w69" target="_blank" rel="noopener noreferrer">
+                            <span data-language="el">ABCstudio Βόλος, Ιωλκού 337, Βόλος, 38221, Ελλάδα</span>
+                            <span data-language="en">ABCstudio Volos, Iolkou 337, Volos, 38221, Greece</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="tel:+2421047222" target="_blank" rel="noopener noreferrer">+30 24210 47222</a>
+                    </div>
+                    <div>
+                        <a href="mailto:abcvolos@gmail.com" target="_blank" rel="noopener noreferrer">abcvolos@gmail.com</a>
+                    </div>
                 </div>
 
                 <div>
@@ -206,9 +279,5 @@
                 </div>
             </div>
         </main>
-
-        <footer>
-
-        </footer>
     </body>
 </html>
