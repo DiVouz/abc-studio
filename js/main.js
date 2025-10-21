@@ -31,8 +31,11 @@
             }
         }
 
+        // Handle click / drag
+
         const onMouseDown = (event) => {
             if (isDragging) return;
+            if (categoryElement.dataset.selected !== 'true') return;
 
             isDragging = true;
             dragStartX = event.clientX || (event.touches && event.touches[0].clientX);
@@ -40,6 +43,7 @@
 
         const onMouseUp = (event) => {
             if (!isDragging) return;
+            if (categoryElement.dataset.selected !== 'true') return;
 
             isDragging = false;
             const dragEndX = event.clientX || (event.changedTouches && event.changedTouches[0].clientX);
@@ -59,22 +63,6 @@
             }
         };
 
-        // Create dots
-        const dotsContainer = categoryElement.querySelector('.gallery-category-dots-container');
-        categoryImageItems.forEach(() => {
-            dotsContainer.insertAdjacentHTML('beforeend', DOT_TEMPLATE);
-
-            const dotElement = dotsContainer.lastElementChild;
-
-            dotElenets.push(dotElement);
-
-            dotElement.addEventListener('click', (event) => {
-                const dotIndex = dotElenets.indexOf(dotElement);
-                changeImageOnCategory(dotIndex);
-            });
-        });
-
-        // Handle click
         categoryElement.addEventListener('click', (event) => {
             if (categoryElement.dataset.selected !== 'true') {
                 galleryCategories.forEach((el) => el.dataset.selected = 'false');
@@ -113,6 +101,24 @@
 
         document.addEventListener('mouseup', onMouseUp);
         document.addEventListener('touchend', onMouseUp);
+
+        // Create dots
+
+        const dotsContainer = categoryElement.querySelector('.gallery-category-dots-container');
+        categoryImageItems.forEach(() => {
+            dotsContainer.insertAdjacentHTML('beforeend', DOT_TEMPLATE);
+
+            const dotElement = dotsContainer.lastElementChild;
+
+            dotElenets.push(dotElement);
+
+            dotElement.addEventListener('click', (event) => {
+                event.stopPropagation();
+
+                const dotIndex = dotElenets.indexOf(dotElement);
+                changeImageOnCategory(dotIndex);
+            });
+        });
 
         changeImageOnCategory(currentIndex, false);
     });
