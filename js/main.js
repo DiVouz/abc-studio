@@ -46,14 +46,21 @@
             if (categoryElement.dataset.selected !== 'true') return;
 
             isDragging = false;
-            const dragEndX = event.clientX || (event.changedTouches && event.changedTouches[0].clientX);
-            const dragDistance = dragEndX - dragStartX;
-            const dragThreshold = 50; // pixels
 
-            if (Math.abs(dragDistance) >= dragThreshold) {
+            const elementBoundingRect = categoryElement.getBoundingClientRect();
+
+            const dragXEnd = event.clientX || (event.changedTouches && event.changedTouches[0].clientX);
+            const dragXDistance = dragXEnd - dragStartX;
+            const dragXThreshold = elementBoundingRect.width * 0.15;
+            
+            const dragYEnd = event.clientY || (event.changedTouches && event.changedTouches[0].clientY);
+            const dragYDistance = dragYEnd - (event.clientY || (event.touches && event.touches[0].clientY));
+            const dragYThreshold = elementBoundingRect.height * 0.3;
+
+            if (Math.abs(dragXDistance) >= dragXThreshold && Math.abs(dragYDistance) < dragYThreshold) {
                 isLastClickDrag = true;
 
-                if (dragDistance > 0) {
+                if (dragXDistance > 0) {
                     // dragged right
                     changeImageOnCategory((currentIndex - 1 + categoryImageItems.length) % categoryImageItems.length);
                 } else {
