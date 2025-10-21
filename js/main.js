@@ -38,7 +38,7 @@
             event.preventDefault();
 
             isDragging = true;
-            dragStartX = event.clientX;
+            dragStartX = event.clientX || event.touches[0].clientX;
         };
 
         const onMouseUp = (event) => {
@@ -48,7 +48,7 @@
             event.preventDefault();
 
             isDragging = false;
-            const dragEndX = event.clientX;
+            const dragEndX = event.clientX || event.changedTouches[0].clientX;
             const dragDistance = dragEndX - dragStartX;
             const dragThreshold = 50; // pixels
 
