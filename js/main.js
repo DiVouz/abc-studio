@@ -31,6 +31,40 @@
             }
         }
 
+        const onMouseDown = (event) => {
+            if (isDragging) return;
+
+            event.stopImmediatePropagation();
+            event.preventDefault();
+
+            isDragging = true;
+            dragStartX = event.clientX;
+        };
+
+        const onMouseUp = (event) => {
+            if (!isDragging) return;
+
+            event.stopPropagation();
+            event.preventDefault();
+
+            isDragging = false;
+            const dragEndX = event.clientX;
+            const dragDistance = dragEndX - dragStartX;
+            const dragThreshold = 50; // pixels
+
+            if (Math.abs(dragDistance) >= dragThreshold) {
+                isLastClickDrag = true;
+
+                if (dragDistance > 0) {
+                    // dragged right
+                    changeImageOnCategory((currentIndex - 1 + categoryImageItems.length) % categoryImageItems.length);
+                } else {
+                    // dragged left
+                    changeImageOnCategory((currentIndex + 1) % categoryImageItems.length);
+                }
+            }
+        };
+
         // Create dots
         const dotsContainer = categoryElement.querySelector('.gallery-category-dots-container');
         categoryImageItems.forEach(() => {
@@ -85,39 +119,11 @@
             }
         });
 
-        categoryElement.addEventListener('mousedown', (event) => {
-            if (isDragging) return;
+        categoryElement.addEventListener('mousedown', onMouseDown);
+        categoryElement.addEventListener('touchstart', onMouseDown);
 
-            event.stopImmediatePropagation();
-            event.preventDefault();
-
-            isDragging = true;
-            dragStartX = event.clientX;
-        });
-
-        document.addEventListener('mouseup', (event) => {
-            if (!isDragging) return;
-
-            event.stopPropagation();
-            event.preventDefault();
-
-            isDragging = false;
-            const dragEndX = event.clientX;
-            const dragDistance = dragEndX - dragStartX;
-            const dragThreshold = 50; // pixels
-
-            if (Math.abs(dragDistance) >= dragThreshold) {
-                isLastClickDrag = true;
-
-                if (dragDistance > 0) {
-                    // dragged right
-                    changeImageOnCategory((currentIndex - 1 + categoryImageItems.length) % categoryImageItems.length);
-                } else {
-                    // dragged left
-                    changeImageOnCategory((currentIndex + 1) % categoryImageItems.length);
-                }
-            }
-        });
+        document.addEventListener('mouseup', onMouseUp);
+        document.addEventListener('touchend', onMouseUp);
 
         changeImageOnCategory(currentIndex, false);
     });
