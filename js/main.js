@@ -17,6 +17,7 @@
         let isDragging = false;
         let isLastClickDrag = false;
         let dragStartX = 0;
+        let dragStartY = 0;
 
         const changeImageOnCategory = (newIndex, shouldScroll = true) => {
             currentIndex = newIndex;
@@ -39,6 +40,7 @@
 
             isDragging = true;
             dragStartX = event.clientX || (event.touches && event.touches[0].clientX);
+            dragStartY = event.clientY || (event.touches && event.touches[0].clientY);
         };
 
         const onMouseUp = (event) => {
@@ -54,7 +56,7 @@
             const dragXThreshold = elementBoundingRect.width * 0.15;
             
             const dragYEnd = event.clientY || (event.changedTouches && event.changedTouches[0].clientY);
-            const dragYDistance = dragYEnd - (event.clientY || (event.touches && event.touches[0].clientY));
+            const dragYDistance = dragYEnd - dragStartY;
             const dragYThreshold = elementBoundingRect.height * 0.3;
 
             if (Math.abs(dragXDistance) >= dragXThreshold && Math.abs(dragYDistance) < dragYThreshold) {
