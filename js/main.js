@@ -34,21 +34,15 @@
         const onMouseDown = (event) => {
             if (isDragging) return;
 
-            event.stopImmediatePropagation();
-            event.preventDefault();
-
             isDragging = true;
-            dragStartX = event.clientX || event.touches[0].clientX;
+            dragStartX = event.clientX || (event.touches && event.touches[0].clientX);
         };
 
         const onMouseUp = (event) => {
             if (!isDragging) return;
 
-            event.stopPropagation();
-            event.preventDefault();
-
             isDragging = false;
-            const dragEndX = event.clientX || event.changedTouches[0].clientX;
+            const dragEndX = event.clientX || (event.changedTouches && event.changedTouches[0].clientX);
             const dragDistance = dragEndX - dragStartX;
             const dragThreshold = 50; // pixels
 
@@ -75,9 +69,6 @@
             dotElenets.push(dotElement);
 
             dotElement.addEventListener('click', (event) => {
-                event.stopImmediatePropagation();
-                event.preventDefault();
-
                 const dotIndex = dotElenets.indexOf(dotElement);
                 changeImageOnCategory(dotIndex);
             });
@@ -85,9 +76,6 @@
 
         // Handle click
         categoryElement.addEventListener('click', (event) => {
-            event.stopImmediatePropagation();
-            event.preventDefault();
-
             if (categoryElement.dataset.selected !== 'true') {
                 galleryCategories.forEach((el) => el.dataset.selected = 'false');
                 categoryElement.dataset.selected = 'true';
@@ -107,7 +95,8 @@
                 }
 
                 const rect = categoryElement.getBoundingClientRect();
-                const clickX = event.clientX - rect.left;
+                const eventX = event.clientX || (event.touches && event.touches[0].clientX);
+                const clickX = eventX - rect.left;
                 
                 if (clickX < rect.width / 2) {
                     // clicked on left side
