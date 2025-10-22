@@ -19,17 +19,56 @@
         let dragStartX = 0;
         let dragStartY = 0;
 
+        // Preload images function
+        const preloadImages = (index) => {
+            const totalImages = categoryImageItems.length;
+            
+            const nextIndex = (index + 1) % totalImages;
+            const nextImg = categoryImageItems[nextIndex].querySelector('img');
+            if (nextImg) {
+                const preloadNext = new Image();
+                preloadNext.src = nextImg.src;
+            }
+            
+            const prevIndex = (index - 1 + totalImages) % totalImages;
+            const prevImg = categoryImageItems[prevIndex].querySelector('img');
+            if (prevImg) {
+                const preloadPrev = new Image();
+                preloadPrev.src = prevImg.src;
+            }
+        };
+
         const changeImageOnCategory = (newIndex, shouldScroll = true) => {
+            if (currentIndex === newIndex) return;
+
+            const oldIndex = currentIndex;
             currentIndex = newIndex;
 
-            categoryImageItems.forEach((item, i) => {
-                item.dataset.visible = (i === currentIndex).toString();
-                dotElenets[i].dataset.active = (i === currentIndex).toString();
-            });
+            // Add fade-out class to current image
+            categoryImageItems[oldIndex].classList.add('gallery-image-fade-out');
+
+            // After fade-out animation, switch images and fade-in
+            setTimeout(() => {
+                categoryImageItems.forEach((item, i) => {
+                    item.dataset.visible = (i === currentIndex).toString();
+                    dotElenets[i].dataset.active = (i === currentIndex).toString();
+                    item.classList.remove('gallery-image-fade-out');
+                });
+
+                // Add fade-in class to new image
+                categoryImageItems[currentIndex].classList.add('gallery-image-fade-in');
+
+                // Remove fade-in class after animation completes
+                setTimeout(() => {
+                    categoryImageItems[currentIndex].classList.remove('gallery-image-fade-in');
+                }, 300);
+            }, 150);
 
             if (shouldScroll === true) {
                 categoryElement.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
             }
+
+            preloadImages(currentIndex);
         }
 
         // Handle click / drag
@@ -62,12 +101,14 @@
             if (Math.abs(dragXDistance) >= dragXThreshold && Math.abs(dragYDistance) < dragYThreshold) {
                 isLastClickDrag = true;
 
+                const totalImages = categoryImageItems.length;
+
                 if (dragXDistance > 0) {
                     // dragged right
-                    changeImageOnCategory((currentIndex - 1 + categoryImageItems.length) % categoryImageItems.length);
+                    changeImageOnCategory((currentIndex - 1 + totalImages) % totalImages);
                 } else {
                     // dragged left
-                    changeImageOnCategory((currentIndex + 1) % categoryImageItems.length);
+                    changeImageOnCategory((currentIndex + 1) % totalImages);
                 }
             }
         };
