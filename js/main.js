@@ -11,8 +11,7 @@
 
         const dotElenets = [];
 
-        let currentIndex = Array.from(categoryImageItems).findIndex((item) => item.dataset.visible === 'true');
-        if (currentIndex === -1) currentIndex = 0;
+        let currentIndex = undefined;
 
         let isDragging = false;
         let isLastClickDrag = false;
@@ -39,13 +38,14 @@
         };
 
         const changeImageOnCategory = (newIndex, shouldScroll = true) => {
-            if (currentIndex === newIndex) return;
-
-            const oldIndex = currentIndex;
-            currentIndex = newIndex;
+            if (newIndex == currentIndex) return;
 
             // Add fade-out class to current image
-            categoryImageItems[oldIndex].classList.add('gallery-image-fade-out');
+            if (currentIndex) {
+                categoryImageItems[currentIndex].classList.add('gallery-image-fade-out');
+            }
+            
+            currentIndex = newIndex;
 
             // After fade-out animation, switch images and fade-in
             setTimeout(() => {
@@ -170,7 +170,7 @@
             });
         });
 
-        changeImageOnCategory(currentIndex, false);
+        changeImageOnCategory(0, false);
     });
 
     // LANGUAGE
@@ -227,10 +227,13 @@
 
     function setTheme(newTheme) {
         if (!isValidTheme(newTheme)) {
-            return setTheme(THEME.LIGHT);
+            setTheme(THEME.LIGHT);
+            return
         }
 
-        if (document.body.dataset.theme === newTheme) return;
+        if (document.body.dataset.theme === newTheme) {
+            return;
+        }
 
         document.body.dataset.theme = newTheme;
 
