@@ -8,6 +8,12 @@
     const galleryCategories = document.querySelectorAll('.gallery-category');
     galleryCategories.forEach((categoryElement) => {
         const categoryImageItems = categoryElement.querySelectorAll('.gallery-category-image-item');
+        
+        // Maximize icon url
+        categoryImageItems.forEach((itemElement) => {
+            const maximizeLinkElement = itemElement.querySelector('.gallery-category-image-item-maximize > a');
+            maximizeLinkElement.href = itemElement.querySelector('.gallery-category-image-item-img').src;
+        });
 
         const dotElenets = [];
 
@@ -114,6 +120,8 @@
         };
 
         categoryElement.addEventListener('click', (event) => {
+            if (event.target.tagName === 'A') return;
+
             if (categoryElement.dataset.selected !== 'true') {
                 galleryCategories.forEach((el) => el.dataset.selected = 'false');
                 categoryElement.dataset.selected = 'true';

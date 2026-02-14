@@ -332,7 +332,7 @@ nav > div > div img {
     z-index: 2;
 }
 
-.gallery-category[data-selected="false"] .gallery-category-image-item-description {
+.gallery-category[data-selected="false"] .gallery-category-image-item-maximize {
     display: none;
 }
 
@@ -389,15 +389,15 @@ nav > div > div img {
     }
 }
 
-.gallery-category[data-selected="false"] .gallery-category-image-item img {
+.gallery-category[data-selected="false"] .gallery-category-image-item-img {
     object-fit: cover;
 }
 
-.gallery-category[data-selected="true"] .gallery-category-image-item img {
+.gallery-category[data-selected="true"] .gallery-category-image-item-img {
     object-position: 50% 50% !important;
 }
 
-.gallery-category-image-item img {
+.gallery-category-image-item-img {
     width: 100%;
     height: 100%;
 
@@ -405,22 +405,41 @@ nav > div > div img {
     object-position: 50% 50%;
 }
 
-.gallery-category[data-selected="false"] .gallery-category-image-item img {
+.gallery-category[data-selected="false"] .gallery-category-image-item-img {
     -webkit-filter: blur(2px) brightness(60%);
     filter: blur(2px) brightness(60%);
 
     transform: scale(1.1);
 }
 
-.gallery-category-image-item-description {
+.gallery-category-image-item-maximize a {
     position: absolute;
 
-    bottom: 0;
+    top: 0;
     right: 0;
-    
-    padding: 1rem;
 
-    color: #ffffff;
+    margin: 0.5rem;
+
+    width: 2.5rem;
+    height: 2.5rem;
+
+    border-radius: var(--border-radius);
+
+    transition: all var(--transition-duration) var(--transition-ease);
+}
+
+.gallery-category-image-item-maximize a:hover {
+    transform: scale(1.1);
+    background-color: var(--background-color-dark);
+}
+
+.gallery-category-image-item-maximize a img {
+    width: 50%;
+    height: auto;
+
+    filter: invert(100%);
+
+    pointer-events: none;
 }
 
 .gallery-category[data-selected="false"] .gallery-category-dots-container {
@@ -508,7 +527,7 @@ nav > div > div img {
     border: none;
     border-radius: var(--border-radius);
 
-    filter: grayscale(100%) invert(1);
+    filter: grayscale(100%) invert(100%);
 }
 
 /* MEDIA QUERIES */
